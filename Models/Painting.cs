@@ -14,6 +14,9 @@ namespace PhotoGallery.Models
         public string PaintingName { get; set; } = string.Empty;
 
         [Required]
+        public IFormFile? Photo { get; set; }
+
+        [Required]
         [Display(Name = "Creation year")]
         public int CreationYear { get; set; }
 

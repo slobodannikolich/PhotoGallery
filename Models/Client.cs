@@ -28,6 +28,7 @@ namespace PhotoGallery.Models
 
         [ForeignKey("ExternalUserID")]
         public int ExternalUserID { get; set; }
+
         public User User { get; set; }
 
         public List<Collection> Collections { get; set; }
