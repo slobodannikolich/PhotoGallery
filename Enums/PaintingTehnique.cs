@@ -2,10 +2,10 @@
 {
     public enum PaintingTehnique
     {
-        Underpainting,
-        Glazing,
-        Sgraffito,
-        Gestural,
-        Pouring
+        Underpainting = 0,
+        Glazing = 1,
+        Sgraffito = 2,
+        Gestural = 3,
+        Pouring = 4
     }
 }

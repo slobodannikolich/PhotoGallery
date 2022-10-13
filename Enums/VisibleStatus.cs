@@ -2,7 +2,7 @@
 {
     public enum VisibleStatus
     {
-        Private,
-        Public
+        Private = 0,
+        Public = 1
     }
 }

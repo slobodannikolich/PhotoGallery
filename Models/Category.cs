@@ -9,7 +9,7 @@ namespace PhotoGallery.Models
 
         [Required(AllowEmptyStrings = false)]
         [StringLength(50)]
-        public string Name { get; set; } = string.Empty;    // SQL server => NVarChar(MAX)
+        public string Name { get; set; } = string.Empty;  
 
         [StringLength(200)]
         public string Description { get; set; } = string.Empty;
