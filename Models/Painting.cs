@@ -7,7 +7,7 @@ namespace PhotoGallery.Models
     public class Painting
     {
         [Key]
-        public int PaintingID { get; set; }
+        public Guid PaintingID { get; set; }
 
         [Required]
         [Display(Name = "Painting name")]
