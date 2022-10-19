@@ -24,6 +24,8 @@ namespace PhotoGallery.Data
 
             modelBuilder.Entity<Author>().HasKey(c => c.AuthorID).IsClustered(false);
             modelBuilder.Entity<Author>().HasIndex(c => new { c.FirstName, c.LastName }).IsUnique(true).IsClustered(true);
+
+            modelBuilder.Entity<ClientFavorite>().HasOne(c => c.Painting).WithMany(x => x.ClientFavorites).OnDelete(DeleteBehavior.NoAction);
         }
     }
 }
