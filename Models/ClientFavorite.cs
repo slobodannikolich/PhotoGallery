@@ -9,7 +9,7 @@ namespace PhotoGallery.Models
         public Guid ClientFavoriteID { get; set; }
 
         [ForeignKey("Client")]
-        public Guid CilentID { get; set; }
+        public Guid ClientID { get; set; }
         public Client Client { get; set; }
 
         [ForeignKey("Painting")]

@@ -30,7 +30,7 @@ namespace PhotoGallery.Models
         public DateTime BirthdayDate { get; set; }
 
         [ForeignKey("IdentityUser")]
-        public Guid ExternalUserID { get; set; }
+        public string ExternalUserID { get; set; }
         public IdentityUser IdentityUser { get; set; }
 
         public List<Collection> Collections { get; set; }
