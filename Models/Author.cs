@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PhotoGallery.Models
 {
     public class Author
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid AuthorID { get; set; }
 
         [Required(AllowEmptyStrings = false)]
@@ -21,6 +23,6 @@ namespace PhotoGallery.Models
         [Display(Name = "Birthday date")]
         public DateTime BirthdayDate { get; set; }
 
-        public List<Painting> Paintings { get; set; }
+        public ICollection<Painting> Paintings { get; set; } = new HashSet<Painting>();
     }
 }

@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PhotoGallery.Models
 {
-    public class Collection
+    public class ClientCollection
     {
         [Key]
-        public Guid CollectionID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid ClientCollectionID { get; set; }
 
         [Required(AllowEmptyStrings = false)]
         [StringLength(50)]
@@ -21,6 +22,8 @@ namespace PhotoGallery.Models
         [ForeignKey("Client")]
         public Guid ClientID { get; set; }
         public Client Client { get; set; }
-        public List<Painting> Paintings { get; set; }
+
+
+        public ICollection<Painting> Paintings { get; set; } = new HashSet<Painting>();
     }
 }

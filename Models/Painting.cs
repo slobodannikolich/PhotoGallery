@@ -7,15 +7,13 @@ namespace PhotoGallery.Models
     public class Painting
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid PaintingID { get; set; }
 
         [Required(AllowEmptyStrings = false)]
         [StringLength(50)]
         [Display(Name = "Painting name")]
         public string PaintingName { get; set; } = string.Empty;
-
-        [Required]
-        public IFormFile? Photo { get; set; }
 
         [Required]
         [Display(Name = "Creation year")]
@@ -37,11 +35,13 @@ namespace PhotoGallery.Models
         public Guid AuthorID { get; set; }
         public Author Author { get; set; }
 
-        [ForeignKey("Collection")]
-        public Guid CollectionID { get; set; }
-        public Collection Collection { get; set; }
 
-        public List<PaintingCategory> PaintingCategories { get; set; }
-        public List<ClientFavorite> ClientFavorites { get; set; }
+        [ForeignKey("Collection")]
+        public Guid ClientCollectionID { get; set; }
+        public ClientCollection ClientCollection { get; set; }
+
+
+        public ICollection<PaintingCategory> PaintingCategories { get; set; } = new HashSet<PaintingCategory>();
+        public ICollection<ClientFavorite> ClientFavorites { get; set; } = new HashSet<ClientFavorite>();
     }
 }

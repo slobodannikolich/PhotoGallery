@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PhotoGallery.Models
 {
     public class Category
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid CategoryID { get; set; }
 
         [Required(AllowEmptyStrings = false)]
@@ -14,6 +16,6 @@ namespace PhotoGallery.Models
         [StringLength(200)]
         public string Description { get; set; } = string.Empty;
 
-        public List<PaintingCategory> PaintingCategories { get; set; }
+        public ICollection<PaintingCategory> PaintingCategories { get; set; } = new HashSet<PaintingCategory>();   
     }
 }

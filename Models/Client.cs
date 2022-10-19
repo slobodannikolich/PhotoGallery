@@ -9,6 +9,7 @@ namespace PhotoGallery.Models
     public class Client
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid ClientID { get; set; }
 
         [Required(AllowEmptyStrings = false)]
@@ -33,7 +34,7 @@ namespace PhotoGallery.Models
         public string ExternalUserID { get; set; }
         public IdentityUser IdentityUser { get; set; }
 
-        public List<Collection> Collections { get; set; }
-        public List<ClientFavorite> ClientFavorites { get; set; }
+        public ICollection<ClientCollection> Collections { get; set; } = new HashSet<ClientCollection>();
+        public ICollection<ClientFavorite> ClientFavorites { get; set; } = new HashSet<ClientFavorite>();
     }
 }
