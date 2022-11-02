@@ -71,7 +71,7 @@ namespace PhotoGallery.Controllers
             try
             {
                 var dbCategory = await _categoryService.GetCategory(category.CategoryID);
-                if (category == null) return BadRequest("The Category doesn't exists");
+                if (dbCategory == null) return BadRequest("The Category doesn't exists");
                 dbCategory.Name = category.Name;
                 dbCategory.Description = category.Description;
 
