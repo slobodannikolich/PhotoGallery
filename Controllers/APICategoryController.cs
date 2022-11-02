@@ -70,8 +70,12 @@ namespace PhotoGallery.Controllers
 
             try
             {
-                var categoryFromDb = await _categoryService.GetCategory(category.CategoryID);
-                _categoryService.Update(categoryFromDb);
+                var dbCategory = await _categoryService.GetCategory(category.CategoryID);
+                if (category == null) return BadRequest("The Category doesn't exists");
+                dbCategory.Name = category.Name;
+                dbCategory.Description = category.Description;
+
+                _categoryService.Save();
                 return Ok("Category has been updated");
             }
             catch (Exception e)
@@ -89,7 +93,7 @@ namespace PhotoGallery.Controllers
             try
             {
                 var category = await _categoryService.GetCategory(id);
-                if (category == null) return BadRequest("Error");
+                if (category == null) return BadRequest("The Category doesn't exists");
                 else
                 {
                     _categoryService.Delete(category);
