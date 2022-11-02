@@ -71,11 +71,7 @@ namespace PhotoGallery.Controllers
             try
             {
                 var categoryFromDb = await _categoryService.GetCategory(category.CategoryID);
-                if (categoryFromDb == null) return BadRequest("Error");
-                else
-                {
-                    _categoryService.Update(categoryFromDb);
-                }
+                _categoryService.Update(categoryFromDb);
                 return Ok("Category has been updated");
             }
             catch (Exception e)
