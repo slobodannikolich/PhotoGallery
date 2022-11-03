@@ -1,0 +1,26 @@
+﻿@model Category
+<div class="modal fade" id="addCategory">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="addCategoryLabel">Are you sure you want to delete this category?</h4>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+			</div>
+			<div class="modal-body">
+				<form asp-controller="Category" asp-action="Delete">
+					<div class="form-group">
+						<input type="hidden" asp-for="@Model.CategoryID" />
+						<label asp-for="Name" class="control-label">Name: @Model.Name</label>
+					</div><br />
+					<div class="form-group">
+						<label asp-for="Description" class="control-label">Description: @Model.Description</label>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-danger" data-save="modal">Delete</button>
+			</div>
+		</div>
+	</div>
+</div>

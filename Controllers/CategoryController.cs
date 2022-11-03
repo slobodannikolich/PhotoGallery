@@ -23,7 +23,8 @@ namespace PhotoGallery.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            Category ctg = new Category();
+            return PartialView("_AddCategoryModelPartial",ctg);
         }
 
         [HttpPost]
@@ -34,7 +35,7 @@ namespace PhotoGallery.Controllers
                 return NotFound();
             }
             _categoryRepository.Add(category);
-            return RedirectToAction("Index");
+            return PartialView("_AddCategoryModelPartial", category);
         }
 
         [HttpGet]
@@ -42,7 +43,7 @@ namespace PhotoGallery.Controllers
         {
             var category = await _categoryRepository.GetCategory(id);
             if (category == null) return NotFound();
-            return View(category);
+            return PartialView("_EditCategoryModelPartial", category);
         }
 
         [HttpPost]
@@ -53,7 +54,7 @@ namespace PhotoGallery.Controllers
                 return NotFound();
             }
             _categoryRepository.Update(category);
-            return RedirectToAction("Index");
+            return PartialView("_EditCategoryModelPartial", category);
         }
 
         [HttpGet]
@@ -61,7 +62,7 @@ namespace PhotoGallery.Controllers
         {
             var category = await _categoryRepository.GetCategory(id);
             if (category == null) return NotFound();
-            return View(category);
+            return PartialView("_DetailCategoryModelPartial", category);
         }
 
         [HttpGet]
@@ -69,7 +70,7 @@ namespace PhotoGallery.Controllers
         {
             var category = await _categoryRepository.GetCategory(id);
             if (category == null) return NotFound();
-            return View(category);
+            return PartialView("_DeleteCategoryModelPartial", category);
         }
 
         [HttpPost, ActionName("Delete")]
@@ -78,7 +79,7 @@ namespace PhotoGallery.Controllers
             var category = await _categoryRepository.GetCategory(id);
             if (category == null) return NotFound();
             _categoryRepository.Delete(category);
-            return RedirectToAction("Index");
+            return PartialView("_DeleteCategoryModelPartial", category);
         }
     }
 }
